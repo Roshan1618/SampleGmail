@@ -1,0 +1,16 @@
+{
+    "predicate": "all",
+    "rules": [
+        {
+            "field":"date",
+            "predicate": "before",
+            "value":"2018/10/03"
+        },
+        {
+            "field":"message",
+            "predicate": "does_not_contain",
+            "value":"Test"
+        }
+    ],
+    "actions":["mark_read","starred", "restore_message"]
+}
