@@ -21,7 +21,6 @@ class GetMail:
         user_info = user_info_service.userinfo().get().execute()
         if user_info and user_info.get('id'):
             self.user_id = user_info.get('id')
-            # print(self.user_id)
         else:
             raise NoUserIdException()
 
@@ -35,7 +34,6 @@ class GetMail:
             results['messages'] = []
             for mail_id in args[0]:
                 results['messages'].append({'id': mail_id})
-            # print(results)
         else:
             results = self.service.users().messages().list(userId=self.user_id,).execute()
             print(results)
@@ -68,22 +66,6 @@ class GetMail:
                     data['to'] = header['value']
             mail_data.append(data)
         return mail_data
-
-    # def get_user_info(self):
-
-
-    # def update_mail(self,filename):
-    #     # filter = Parser(filename).filter_mail()
-    #     filter = {
-    #         'criteria': {
-    #             'from': 'vasanthn7.com'
-    #         },
-    #         'action': {
-    #             'removeLabelIds': ['INBOX']
-    #         }
-    #     }
-    #     result = self.service.users().settings().filters().create(userId='me', body=filter).execute()
-
-if __name__ == '__main__':
+ if __name__ == '__main__':
     obj = GetMail()
     print(obj.get_mail_id(['1663f2ea2e0c9bad','1663f2ea2e0c9bad']))
