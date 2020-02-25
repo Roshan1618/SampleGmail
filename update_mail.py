@@ -1,13 +1,11 @@
 from get_mail import GetMail
 from validate_rule import Parser
 from datetime import datetime
-import pprint
 from store_data import StoreData
 
 class UpdateMail:
     def __init__(self,filename):
         self.filter = Parser(filename).validate_data()
-        # print(self.filter)
 
     def filter_mail(self):
         obj = GetMail()
@@ -64,7 +62,6 @@ class UpdateMail:
         return mail_ids
 
     def update_mail(self):
-        # self.filter_mail()
         action_body = {}
         action_body['ids'] = self.filter_mail()
         for action in self.filter['action']:

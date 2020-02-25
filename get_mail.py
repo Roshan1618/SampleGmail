@@ -17,13 +17,9 @@ class GetMail:
         user_info_service = build(
             serviceName='oauth2', version='v2',
             http=self.creds.authorize(Http()))
-        user_info = None
         user_info = user_info_service.userinfo().get().execute()
         if user_info and user_info.get('id'):
             self.user_id = user_info.get('id')
-        else:
-            raise NoUserIdException()
-
         self.service = build('gmail', 'v1', http=self.creds.authorize(Http()))
 
 
@@ -66,6 +62,6 @@ class GetMail:
                     data['to'] = header['value']
             mail_data.append(data)
         return mail_data
- if __name__ == '__main__':
+if __name__ == '__main__':
     obj = GetMail()
-    print(obj.get_mail_id(['1663f2ea2e0c9bad','1663f2ea2e0c9bad']))
+    obj.get_mail_id()

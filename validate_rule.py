@@ -52,7 +52,6 @@ class Parser:
                         filter['action'][action_dict[action][0]].append(action_dict[action][1])
                 else:
                     print("Invalid Action \'" + action + "\', Omitting")
-
         return filter
 
 if __name__ == '__main__':
